@@ -8,12 +8,52 @@
             margin: 0;
             overflow: hidden;
         }
+        #game-over{
+            color: white;
+            position: absolute;
+            display: flex;
+            width: 400px;
+            height: 200px;
+            justify-content: center;
+            align-items: center;
+            z-index: 3;
+            top:0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            background-color: rgb(66, 66, 66);
+            visibility: hidden;
+            border-radius:20px;
+        }
+        .btn{
+            border-radius:20px;
+            background-color: green;
+            border: none;
+            height: 30px;
+            padding: 20;
+            font-size: 20px;
+
+        }
     </style>
 </head>
 
 <body>
-    <p style="color: white;position: fixed;z-index: 2;left:20px;"><span>Score:</span><spano id="score">0</spano></p>
+    <p style="color: white;position: fixed;z-index: 2;left:20px;font-size: 25px;"><span>Score:</span><spano id="score">0</spano></p>
+    
+    <div id="game-over">
+        <div style="display: flex;justify-content: center;flex-direction: column;">
+            <p style="font-size: 40px;">Game Over</p>
+            <button class="btn" onclick="location.reload()">Retry</button>
+        </div>
+    </div>
     <canvas id="gameCanvas" width="100%" height="100%"></canvas>
+    <script src="./class/player.js"></script>
+    <script src="./class/Particle.js"></script>
+    <script src="./class/InvaderProjectile.js"></script>
+    <script src="./class/invader.js"></script>
+    <script src="./class/Grid.js"></script>
+    <script src="./class/Projectile.js"></script>
     <script src="./index.js"></script>
 </body>
 
