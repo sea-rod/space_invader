@@ -183,22 +183,24 @@ function animate() {
 
           // removes projectile and invader
           setTimeout(() => {
-            grid.invader.splice(invader_index, 1);
-            projectiles.splice(projectile_index, 1);
-            //changes the grid size
+            if (grid.invader[invader_index] == invader) {
+              grid.invader.splice(invader_index, 1);
+              projectiles.splice(projectile_index, 1);
+              //changes the grid size
 
-            if (grid.invader.length > 0) {
-              const frist_invader = grid.invader[0];
-              const last_invader = grid.invader[grid.invader.length - 1];
+              if (grid.invader.length > 0) {
+                const frist_invader = grid.invader[0];
+                const last_invader = grid.invader[grid.invader.length - 1];
 
-              grid.width =
-                last_invader.position.x +
-                last_invader.width -
-                frist_invader.position.x;
+                grid.width =
+                  last_invader.position.x +
+                  last_invader.width -
+                  frist_invader.position.x;
 
-              grid.position.x = frist_invader.position.x;
-            } else {
-              grids.splice(grid_index, 1);
+                grid.position.x = frist_invader.position.x;
+              } else {
+                grids.splice(grid_index, 1);
+              }
             }
           }, 0);
         }
@@ -232,18 +234,21 @@ addEventListener("keydown", ({ key }) => {
       break;
     case " ":
       keys.space.pressed = true;
-      projectiles.push(
-        new Projectile({
-          position: {
-            x: player.position.x + player.width / 2,
-            y: player.position.y,
-          },
-          velocity: {
-            x: 0,
-            y: -20,
-          },
-        })
-      );
+      if (projectiles.length < 50) {
+        projectiles.push(
+          new Projectile({
+            position: {
+              x: player.position.x + player.width / 2,
+              y: player.position.y,
+            },
+            velocity: {
+              x: 0,
+              y: -20,
+            },
+          })
+        );
+      }
+
       break;
 
     default:

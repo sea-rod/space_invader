@@ -22,6 +22,5 @@ class Particle {
     this.position.x += this.velocity.x;
     this.position.y += this.velocity.y;
     this.opacity -= this.fade;
-    console.log(this.fade);
   }
 }
